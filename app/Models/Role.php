@@ -8,3 +8,5 @@ class Role extends LaratrustRole
 {
     public $guarded = [];
 }
+
+

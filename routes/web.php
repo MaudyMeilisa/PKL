@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,5 +46,27 @@ Route :: group (['prefix' => 'admin','middleware'=>['auth','role:admin']],
             Route::get('profile', function(){
                 return 'halaman profile member';
             });
+        });
+
+        Route :: group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
+            Route :: get('karyawan', function(){
+                return view('karyawan.index');
+            })->middleware(['role:admin']);
+
+            Route :: get('absensi', function(){
+                return view('absensi.index');
+            })->middleware(['role:admin|member']);
+
+            Route :: get('jabatan', function(){
+                return view('jabatan.index');
+            })->middleware(['role:admin']);
+
+            Route :: get('gaji', function(){
+                return view('gaji.index');
+            })->middleware(['role:admin|member']);
+
+            Route::resource('jabatan',JabatanController::class);
+            Route::resource('karyawan',KaryawanController::class);
+
         });
 
