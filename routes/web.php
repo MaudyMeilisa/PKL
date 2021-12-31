@@ -67,6 +67,8 @@ Route :: group (['prefix' => 'admin','middleware'=>['auth','role:admin']],
 
             Route::resource('jabatan',JabatanController::class);
             Route::resource('karyawan',KaryawanController::class);
+            Route::resource('absen',AbsenController::class);
+            Route::resource('gaji',GajiController::class);
 
         });
 

@@ -15,12 +15,12 @@ class CreateAbsensTable extends Migration
     {
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('id_karyawan')->unsigned();
-            $table->date('tanggal masuk');
+            $table->biginteger('karyawan_id')->unsigned();
+            $table->date('tanggal_masuk');
             $table->string('status_absen');
 
             //fk id_karyawan
-            $table->foreign('id_karyawan')->references('id')
+            $table->foreign('karyawan_id')->references('id')
             ->on('karyawans')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();

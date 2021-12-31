@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gaji;
+use App\Models\Jabatan;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class GajiController extends Controller
@@ -14,7 +16,8 @@ class GajiController extends Controller
      */
     public function index()
     {
-        //
+        $gaji = Gaji::with('jabatan', 'karyawan')->get();
+        return view('admin.gaji.index', compact('gaji'));
     }
 
     /**
@@ -24,7 +27,10 @@ class GajiController extends Controller
      */
     public function create()
     {
-        //
+        //mengambil data author
+        $jabatan = Jabatan::all();
+        $karyawan = Karyawan::all();
+        return view('admin.gaji.create', compact('jabatan', 'karyawan'));
     }
 
     /**
@@ -35,7 +41,26 @@ class GajiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'karyawan_id'=>'required',
+            'jabatan_id'=>'required',
+            'gapok' => 'required',
+            'tunjangan' => 'required',
+            'lembur' => 'required',
+            'potongan'=>'required',
+            'total'=>'required',
+        ]);
+
+        $gaji = new Gaji;
+        $gaji->karyawan_id = $request->karyawan_id;
+        $gaji->jabatan_id = $request->jabatan_id;
+        $gaji->gapok = $request->gapok;
+        $gaji->tunjangan = $request->tunjangan;
+        $gaji->lembur = $request->lembur;
+        $gaji->potongan = $request->potongan;
+        $gaji->total = $request->total;
+        $gaji->save();
+        return redirect()->route('gaji.index');
     }
 
     /**
@@ -44,9 +69,10 @@ class GajiController extends Controller
      * @param  \App\Models\Gaji  $gaji
      * @return \Illuminate\Http\Response
      */
-    public function show(Gaji $gaji)
+    public function show($id)
     {
-        //
+        $gaji = Gaji::findOrFail($id);
+        return view('admin.gaji.show', compact('gaji'));
     }
 
     /**
@@ -55,9 +81,12 @@ class GajiController extends Controller
      * @param  \App\Models\Gaji  $gaji
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gaji $gaji)
+    public function edit($id)
     {
-        //
+        $gaji = Gaji::findOrFail($id);
+        $jabatan = Jabatan::all();
+        $karyawan = Karyawan::all();
+        return view('admin.gaji.edit', compact('gaji', 'karyawan', 'jabatan'));
     }
 
     /**
@@ -67,9 +96,28 @@ class GajiController extends Controller
      * @param  \App\Models\Gaji  $gaji
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gaji $gaji)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'karyawan_id'=>'required',
+            'jabatan_id'=>'required',
+            'gapok' => 'required',
+            'tunjangan' => 'required',
+            'lembur' => 'required',
+            'potongan'=>'required',
+            'total'=>'required',
+        ]);
+
+        $gaji = new Gaji;
+        $gaji->karyawan_id = $request->karyawan_id;
+        $gaji->jabatan_id = $request->jabatan_id;
+        $gaji->gapok = $request->gapok;
+        $gaji->tunjangan = $request->tunjangan;
+        $gaji->lembur = $request->lembur;
+        $gaji->potongan = $request->potongan;
+        $gaji->total = $request->total;
+        $gaji->save();
+        return redirect()->route('gaji.index');
     }
 
     /**
@@ -78,8 +126,10 @@ class GajiController extends Controller
      * @param  \App\Models\Gaji  $gaji
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gaji $gaji)
+    public function destroy($id)
     {
-        //
+        $gaji = Gaji::findOrFail($id);
+        $gaji->delete();
+        return redirect()->route('gaji.index');
     }
 }

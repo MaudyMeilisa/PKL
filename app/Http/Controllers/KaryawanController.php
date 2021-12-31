@@ -14,7 +14,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        // mengambil data 'jabatan
+        // mengambil data 'jabatan'
 
         // yang berasal dari model 'karyawan'
         $karyawan = Karyawan::with('jabatan')->get();

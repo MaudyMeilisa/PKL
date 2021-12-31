@@ -28,8 +28,8 @@ Dashboard
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Tempat,Tanggal Lahir</label>
-                                <input type="text" name="ttl" class="form-control @error('ttl') is-invalid @enderror">
+                                <label for="">Tanggal Lahir</label>
+                                <input type="date" name="ttl" class="form-control @error('ttl') is-invalid @enderror">
                                 @error('ttl')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

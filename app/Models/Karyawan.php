@@ -18,13 +18,13 @@ class Karyawan extends Model
    public $timestamps=true;
 
     //membuat relasi one to many
-    public function jabatans()
+    public function jabatan()
     {
         //data model "karyawan" bisa memiliki banyak data
         //data model "jabatan" melalui fk "id_jabatan"
         return $this->belongsTo('App\Models\Jabatan','jabatan_id');
     }
-    public function gajis()
+    public function gaji()
     {
         //data model "gaji" bisa memiliki banyak data
         //data model "karyawan" melalui fk "id_karyawan"

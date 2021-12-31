@@ -15,8 +15,8 @@ class CreateGajisTable extends Migration
     {
         Schema::create('gajis', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('id_karyawan')->unsigned();
-            $table->biginteger('id_jabatan')->unsigned();
+            $table->biginteger('karyawan_id')->unsigned();
+            $table->biginteger('jabatan_id')->unsigned();
             $table->string('gapok');
             $table->string('tunjangan');
             $table->string('lembur');
@@ -25,12 +25,12 @@ class CreateGajisTable extends Migration
 
 
             //fk id_karyawan
-            $table->foreign('id_karyawan')->references('id')
+            $table->foreign('karyawan_id')->references('id')
             ->on('karyawans')->onUpdate('cascade')
             ->onDelete('cascade');
 
             //fk id_jabatan
-            $table->foreign('id_jabatan')->references('id')
+            $table->foreign('jabatan_id')->references('id')
             ->on('jabatans')->onUpdate('cascade')
             ->onDelete('cascade');
 

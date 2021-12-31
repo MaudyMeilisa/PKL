@@ -15,46 +15,38 @@ Dashboard
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Data Karyawan
-                        <a href="{{ route('karyawan.create') }}" class="btn btn-sm btn-outline-primary"
-                            style="float: right">Tambah Data Karyawan</a>
+                        Data Absen
+                        <a href="{{ route('absen.create') }}" class="btn btn-sm btn-outline-primary"
+                            style="float: right">Tambah Data Absen</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <table class="table" id="karyawan">
+                        <table class="table" id="absen">
                                 <thead>
                                 <tr>
                                     <th>Nomor</th>
-                                    <th>Nama Karyawan</th>
-                                    <th> Tanggal Lahir</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Agama</th>
-                                    <th>Alamat</th>
-                                    <th>No Handphone</th>
-                                    <th>Jabatan</th>
+                                    <th>Id Karyawan</th>
+                                    <th> Tanggal Masuk</th>
+                                    <th>Status Absen</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                         <tbody>
                                 @php $no=1; @endphp
-                                @foreach ($karyawan as $data)
+                                @foreach ($absen as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->nama_karyawan }}</td>
-                                        <td>{{ $data->ttl }}</td>
-                                        <td>{{ $data->jk }}</td>
-                                        <td>{{ $data->agama }}</td>
-                                        <td>{{ $data->alamat}}</td>
-                                        <td>{{ $data->no_hp}}</td>
-                                        <td>{{ $data->jabatan->nama_jabatan}}</td>
+                                        <td>{{ $data->id_karyawan }}</td>
+                                        <td>{{ $data->tanggal_masuk }}</td>
+                                        <td>{{ $data->status_absen }}</td>
 
                                         <td>
-                                            <form action="{{ route('karyawan.destroy', $data->id) }}" method="post">
+                                            <form action="{{ route('absen.destroy', $data->id) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <a href="{{ route('karyawan.edit', $data->id) }}"
+                                                <a href="{{ route('absen.edit', $data->id) }}"
                                                     class="btn btn-outline-info">Edit</a>
-                                                <a href="{{ route('karyawan.show', $data->id) }}"
+                                                <a href="{{ route('absen.show', $data->id) }}"
                                                     class="btn btn-outline-warning">Show</a>
                                                 <button type="submit" class="btn btn-outline-danger"
                                                     onclick="return confirm('Are you sure?');">Delete</button>
@@ -79,7 +71,7 @@ Dashboard
     </script>
     <script>
         $(document).ready(function(){
-            $('#karyawan').DataTable();
+            $('#absen').DataTable();
         });
         </script>
         @endsection

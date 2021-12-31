@@ -23,7 +23,7 @@ class CreateKaryawansTable extends Migration
             $table->biginteger('no_hp')->unsigned();
             $table->biginteger('jabatan_id')->unsigned();
 
-             //fk id_jabatan_id
+             //fk id jabatan_id
              $table->foreign('jabatan_id')->references('id')
              ->on('jabatans')->onUpdate('cascade')
              ->onDelete('cascade');
