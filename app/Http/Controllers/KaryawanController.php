@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Session;
 
 class KaryawanController extends Controller
 {
@@ -61,6 +62,10 @@ class KaryawanController extends Controller
         $karyawan->no_hp = $request->no_hp;
         $karyawan->jabatan_id = $request->jabatan_id;
         $karyawan->save();
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Menyimpan  $karyawan->nama_karyawan"
+        ]);
         return redirect()->route('karyawan.index');
     }
 

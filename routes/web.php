@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\GajiController;
+use App\Http\Controllers\AbsenController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

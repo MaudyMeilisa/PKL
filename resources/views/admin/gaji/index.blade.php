@@ -1,17 +1,15 @@
-@extends('layouts.admin')
-@section('header')
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-12">
-                <h1 class="m-0">Data Penggajian</h1>
-            </div>
-        </div>
-    </div>
-</div>
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+
+Dashboard
+
 @endsection
 
 @section('content')
+@include('layouts._flash')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -22,11 +20,12 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="gaji">
+                        <thead>
                             <tr>
                                 <th>Nomor</th>
-                                <th>ID karyawan</th>
-                                <th>ID Jabatan</th>
+                                <th>karyawan</th>
+                                <th>Jabatan</th>
                                 <th>Gaji Pokok</th>
                                 <th>Tunjangan</th>
                                 <th>Lembur</th>
@@ -34,12 +33,14 @@
                                 <th>Total Gaji</th>
                                 <th>Aksi</th>
                             </tr>
+                            <thead>
+                            <tbody>
                             @php $no=1; @endphp
                             @foreach($gaji as $data)
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$data->karyawan->nama_karyawan}}</td>
-                                <td>{{$data->jabatan->id}}</td>
+                                <td>{{$data->jabatan_id->jabatan}}</td>
                                 <td>{{$data->gapok}}</td>
                                 <td>{{$data->tunjangan}}</td>
                                 <td>{{$data->lembur}}</td>
@@ -64,3 +65,16 @@
     </div>
 </div>
 @endsection
+@section('css')
+<link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+    @endsection
+
+@section('js')
+<script src="{{asset('DataTables/datatables.min.js')}}">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#gaji').DataTable();
+        });
+        </script>
+        @endsection

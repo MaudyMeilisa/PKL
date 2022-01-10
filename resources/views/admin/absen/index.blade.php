@@ -25,7 +25,7 @@ Dashboard
                                 <thead>
                                 <tr>
                                     <th>Nomor</th>
-                                    <th>Id Karyawan</th>
+                                    <th>Karyawan</th>
                                     <th> Tanggal Masuk</th>
                                     <th>Status Absen</th>
                                     <th>Action</th>
@@ -36,7 +36,7 @@ Dashboard
                                 @foreach ($absen as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->id_karyawan }}</td>
+                                        <td>{{ $data->karyawan->nama_karyawan }}</td>
                                         <td>{{ $data->tanggal_masuk }}</td>
                                         <td>{{ $data->status_absen }}</td>
 
