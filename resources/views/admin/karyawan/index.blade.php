@@ -45,7 +45,7 @@ Dashboard
                                         <td>{{ $data->jk }}</td>
                                         <td>{{ $data->agama }}</td>
                                         <td>{{ $data->alamat}}</td>
-                                        <td>{{ $data->no_hp}}</td>
+                                        <td>{{$data->no_hp}}</td>
                                         <td>{{ $data->jabatan->nama_jabatan}}</td>
 
                                         <td>

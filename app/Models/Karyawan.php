@@ -18,7 +18,7 @@ class Karyawan extends Model
    public $timestamps=true;
 
     //membuat relasi one to many
-    public function jabatan()
+    public function jabatans()
     {
         //data model "karyawan" bisa memiliki banyak data
         //data model "jabatan" melalui fk "id_jabatan"
@@ -28,13 +28,13 @@ class Karyawan extends Model
     {
         //data model "gaji" bisa memiliki banyak data
         //data model "karyawan" melalui fk "id_karyawan"
-       return $this->hasOne('App\Models\Gaji','karyawan_id');
+       return $this->hasMany('App\Models\Gaji','karyawan_id');
     }
     public function absen()
     {
         //data model "absen" bisa memiliki banyak data
         //data model "karyawan" melalui fk "id_karyawan"
-       return $this->hasOne('App\Models\Absen','id_karyawan');
+       return $this->hasMany('App\Models\Absen','karyawan_id');
     }
 
 }

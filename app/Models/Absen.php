@@ -20,8 +20,8 @@ class Absen extends Model
    //membuat relasi one to many
    public function karyawan()
    {
-       //data model "jabtan" bisa memiliki banyak data
-       //data model "karyawan" melalui fk "id_jabatan"
+       //data model "absen" bisa memiliki banyak data
+       //data model "karyawan" melalui fk "karyawan_id"
        return $this->belongsTo('App\Models\Karyawan','karyawan_id');
    }
 }

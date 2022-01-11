@@ -40,12 +40,12 @@ Dashboard
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$data->karyawan->nama_karyawan}}</td>
-                                <td>{{$data->jabatan_id->jabatan}}</td>
-                                <td>{{$data->gapok}}</td>
-                                <td>{{$data->tunjangan}}</td>
-                                <td>{{$data->lembur}}</td>
-                                <td>{{$data->potongan}}</td>
-                                <td>{{$data->total}}</td>
+                                <td>{{$data->jabatan->nama_jabatan}}</td>
+                                <td>Rp.{{ number_format($data->gapok) }}</td>
+                                <td>Rp.{{number_format($data->tunjangan)}}</td>
+                                <td>Rp.{{number_format($data->lembur)}}</td>
+                                <td>Rp.{{number_format($data->potongan)}}</td>
+                                <td>Rp.{{number_format($data->total)}}</td>
                                 <td>
                                     <form action="{{route('gaji.destroy',$data->id)}}" method="post">
                                         @method('delete')

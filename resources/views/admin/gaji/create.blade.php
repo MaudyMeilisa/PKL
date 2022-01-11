@@ -28,13 +28,13 @@ Dashboard
 
                             </div>
                             <div class="form-group">
-                                <label for="">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror">
-                                @error('jabatan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <label for="">Nama Jabatan</label>
+                                <select name="jabatan_id" class="form-control @error('jabatan_id') is-invalid @enderror" >
+                                @foreach($jabatan as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_jabatan}}</option>
+                                @endforeach
+                            </select>
+
                             </div>
                             <div class="form-group">
                                 <label for="">Gaji Pokok</label>

@@ -18,10 +18,17 @@ class Jabatan extends Model
    public $timestamps=true;
 
    //membuat relasi one to many
-   public function karyawans()
+   public function karyawan()
    {
        //data model "jabtan" bisa memiliki banyak data
        //data model "karyawan" melalui fk "id_jabatan"
-       $this->hasMany('App\Models\Karyawan','id_jabatan');
+       $this->hasMany('App\Models\Karyawan','jabatan_id');
+   }
+
+   public function gaji()
+   {
+       //data model "gaji" bisa memiliki banyak data
+       //data model "jabatan" melalui fk "jabatan_id"
+       return $this->hasMany('App\Models\Gaji','jabatan_id');
    }
 }

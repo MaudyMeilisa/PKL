@@ -20,7 +20,11 @@ Dashboard
                             @csrf
                             <div class="form-group">
                                 <label for="">Nama Jabatan</label>
-                                <input type="text" name="nama_jabatan" class="form-control @error('nama_jabatan') is-invalid @enderror">
+                                <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
+                                <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
+                                <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
+                                <input type="radio" name="nama_jabatan" value="OB">OB<br>
+</input>
                                 @error('nama_jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

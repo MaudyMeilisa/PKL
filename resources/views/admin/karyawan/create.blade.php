@@ -75,6 +75,7 @@ Dashboard
                             <div class="form-group">
                                 <label for="">Jabatan</label>
                                 <select name="jabatan_id" class="form-control @error('jabatan_id') is-invalid @enderror">
+
                              <option value="">Pilih Jabatan</option>
                              @foreach ($jabatan as $data)
                              <option value="{{$data->id}}">{{$data->nama_jabatan}}</option>
