@@ -19,10 +19,11 @@ Dashboard
                         <form action="{{ route('jabatan.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="">Nama Jabatan</label>
+                                <label for="">Nama Jabatan</label><br>
                                 <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
                                 <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
                                 <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
+                                <input type="radio" name="nama_jabatan" value="OB">Bendahara<br>
                                 <input type="radio" name="nama_jabatan" value="OB">OB<br>
 </input>
                                 @error('nama_jabatan')

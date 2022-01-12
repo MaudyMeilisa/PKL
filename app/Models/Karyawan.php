@@ -18,7 +18,7 @@ class Karyawan extends Model
    public $timestamps=true;
 
     //membuat relasi one to many
-    public function jabatans()
+    public function jabatan()
     {
         //data model "karyawan" bisa memiliki banyak data
         //data model "jabatan" melalui fk "id_jabatan"

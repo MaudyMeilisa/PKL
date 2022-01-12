@@ -36,6 +36,8 @@ class JabatanController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -47,6 +49,18 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         //
+        $jabatan = new Jabatan();
+        $jabatan->nama_jabatan = $request ->nama_jabatan;
+        $jabatan->gaji_pokok = $request ->gaji_pokok;
+        $jabatan->save();
+
+        return responses()->json([
+            'success' => true,
+            'message' => ' Data Jabatan berhasil di buat',
+            'data'    => $jabatan,
+        ],201);
+
+
     }
 
     /**
@@ -58,6 +72,12 @@ class JabatanController extends Controller
     public function show($id)
     {
         //
+        $jabatan = Jabatan::findOrFail($id);
+        return response()->json([
+            'success' => true,
+            'message' => 'menampilkan Data Jabatan',
+            'data'    => $jabatan,
+        ], 200);
     }
 
     /**
@@ -81,6 +101,17 @@ class JabatanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $jabatan = new Jabatan();
+        $jabatan->nama_jabatan = $request ->nama_jabatan;
+        $jabatan->gaji_pokok = $request ->gaji_pokok;
+        $jabatan->save();
+
+        return responses()->json([
+            'success' => true,
+            'message' => ' Data Jabatan berhasil di edit',
+            'data'    => $jabatan,
+        ],201);
+
     }
 
     /**
@@ -92,5 +123,12 @@ class JabatanController extends Controller
     public function destroy($id)
     {
         //
+        $jabatan = Jabatan :: findOrFail($id);
+        $jabatan->delete();
+        return response()->json([
+            'success' => true,
+            'message' => ' Data Jabatan berhasil di hapus',
+            'data'    => $jabatan,
+        ], 200);
     }
 }

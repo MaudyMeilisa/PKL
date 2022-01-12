@@ -60,6 +60,10 @@ class GajiController extends Controller
         $gaji->potongan = $request->potongan;
         $gaji->total = $request->total;
         $gaji->save();
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Menyimpan  $gaji->karyawan_id  "
+        ]);
         return redirect()->route('gaji.index');
     }
 

@@ -20,14 +20,19 @@ Dashboard
                         @csrf
                         @method('put')
                         <div class="form-group">
-                            <label for="">Masukan Nama Jabatan</label>
-                            <input type="text" name="nama_jabatan" value="{{$jabatan->nama_jabatan}}" class="form-control @error('nama_jabatan') is-invalid @enderror">
-                             @error('nama_jabatan')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                                <label for="">Pilih Jabatan</label><br>
+                                <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
+                                <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
+                                <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
+                                <input type="radio" name="nama_jabatan" value="Bendahara">Bendahara<br>
+                                <input type="radio" name="nama_jabatan" value="OB">OB<br>
+                                    </input>
+                                @error('nama_jabatan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         <div class="form-group">
                             <label for="">Gaji Pokok</label>
                             <input type="number" name="gapok" value="{{$jabatan->gapok}}" class="form-control @error('gapok') is-invalid @enderror">
