@@ -38,14 +38,16 @@ Dashboard
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Jenis Kelamin</label>
-                            <input type="text" name="jk" value="{{$karyawan->jk}}" class="form-control @error('jk') is-invalid @enderror">
-                             @error('jk')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                                <label for="">Jenis Kelamin</label><br>
+                                <input type="radio" name="jk" value="Laki-laki">Laki-laki<br>
+                                <input type="radio" name="jk" value="Perempuan">Perempuan<br>
+                               </input>
+                                @error('jk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         <div class="form-group">
                             <label for="">Agama</label>
                             <input type="text" name="agama" value="{{$karyawan->agama}}" class="form-control @error('agama') is-invalid @enderror">

@@ -19,6 +19,24 @@ Dashboard
                         <form action="{{ route('karyawan.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
+                                <label for="">Username</label>
+                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" name="password" class="form-control @error('nama_karyawan') is-invalid @enderror">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="">Nama Karyawan</label>
                                 <input type="text" name="nama_karyawan" class="form-control @error('nama_karyawan') is-invalid @enderror">
                                 @error('nama_karyawan')
@@ -36,9 +54,11 @@ Dashboard
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Jenis Kelamin</label>
-                                <input type="text" name="jk" class="form-control @error('jk') is-invalid @enderror">
+                               <div class="form-group">
+                                <label for="">Jenis Kelamin</label><br>
+                                <input type="radio" name="jk" value="Laki-laki">Laki-laki<br>
+                                <input type="radio" name="jk" value="Perempuan">Perempuan<br>
+                               </input>
                                 @error('jk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

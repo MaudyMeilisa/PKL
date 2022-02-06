@@ -1,11 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
+use Hash;
+use Illuminate\Database\Seeder;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -15,35 +15,31 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //membuat role
-        $adminRole = new Role();
-        $adminRole-> name = "admin";
-        $adminRole-> display_name = "Administrator";
-        $adminRole-> save();
-
-        $memberRole = new Role();
-        $memberRole-> name = "member";
-        $memberRole-> display_name = "member";
-        $memberRole-> save();
+       //membuat sample role
+       $adminRole = new Role();
+       $adminRole->name = "admin";
+       $adminRole->display_name = "Administrator";
+       $adminRole->save();
 
 
-        //membuat sample user
-        $admin = new User();
-        $admin->name = 'Maudy Meilisa';
-        $admin->email = 'admin@gmail.com';
-        $admin->password = Hash::make('12345678');
-        $admin->save();
+       $memberRole = new Role();
+       $memberRole->name = "member";
+       $memberRole->display_name = "Member";
+       $memberRole->save();
 
-        $member = new User();
-        $member->name = 'member';
-        $member->email = 'member@gmail.com';
-        $member->password = Hash::make('12345678');
-        $member->save();
+       //membuat sample admin
+       $admin = new User();
+       $admin->name = 'Maudy Meilisa';
+       $admin->email = 'admin@gmail.com';
+       $admin->password = Hash::make('12345678');
+       $admin->save();
+       $admin->attachRole($adminRole);
 
-
-        $admin->attachRole($adminRole);
-        $member->attachRole($memberRole);
-
-
+       $member = new User();
+       $member->name = 'Member Users';
+       $member->email = 'member@gmail.com';
+       $member->password = bcrypt('12345678');
+       $member->save();
+       $member->attachRole($memberRole);
     }
 }

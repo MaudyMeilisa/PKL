@@ -43,7 +43,7 @@ Dashboard
                                 <td>{{$data->jabatan->nama_jabatan}}</td>
                                 <td>Rp.{{ number_format($data->gapok) }}</td>
                                 <td>Rp.{{number_format($data->tunjangan)}}</td>
-                                <td>Rp.{{number_format($data->lembur)}}</td>
+                                <td>{{number_format($data->lembur)}}</td>
                                 <td>Rp.{{number_format($data->potongan)}}</td>
                                 <td>Rp.{{number_format($data->total)}}</td>
                                 <td>

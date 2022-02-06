@@ -4,13 +4,15 @@
 
 @section('content_header')
 
-Dashboard
+
 
 @stop
 
 @section('content')
 
-welcome to this beautiful admin panel.
+<center>
+<img src="4.jpg" style="width:100%"/>
+</center>
 
 @stop
 

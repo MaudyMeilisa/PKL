@@ -61,6 +61,8 @@ class KaryawanController extends Controller
         $karyawan->alamat = $request->alamat;
         $karyawan->no_hp = $request->no_hp;
         $karyawan->jabatan_id = $request->jabatan_id;
+        $karyawan->username = $request->username;
+        $karyawan->password = $request->password;
         $karyawan->save();
         Session::flash("flash_notification", [
             "level"=>"success",
@@ -138,5 +140,17 @@ class KaryawanController extends Controller
         $karyawan = Karyawan::findOrFail($id);
         $karyawan->delete();
         return redirect()->route('karyawan.index');
+    }
+
+    public function login(){
+        return view('admin.karyawan.login');
+    }
+
+    public function loginStore(Request $request){
+        if((Karyawan::where('username', $request->username)->get())){
+            return redirect()->route('loginKaryawan');
+        }
+
+        return back();
     }
 }

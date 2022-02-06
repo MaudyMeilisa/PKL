@@ -9,10 +9,10 @@ class Karyawan extends Model
 {
     use HasFactory;
      //memberikan akses data apa saja yang bisa dilihat
-   protected $visible=['nama_karyawan','ttl','jk','agama','alamat','no_hp','jabatan_id'];
+   protected $visible=['nama_karyawan','ttl','jk','agama','alamat','no_hp','jabatan_id', 'username', 'password'];
 
    //memberikan akses dat apa saja yang bisa diisi
-   protected $fillable =['nama_karyawan','ttl','jk','agama','alamat','no_hp','jabatan_id'];
+   protected $fillable =['nama_karyawan','ttl','jk','agama','alamat','no_hp','jabatan_id', 'username', 'password'];
 
    //mencatat waktu pembuatan dan update data otomatis
    public $timestamps=true;

@@ -41,7 +41,7 @@ Dashboard
                                 <input type="number" name="gapok" class="form-control @error('gapok') is-invalid @enderror">
                                 @error('gapok')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -70,9 +70,9 @@ Dashboard
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                               @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="">total</label>
                                 <input type="number" name="total" class="form-control @error('total') is-invalid @enderror">
                                 @error('total')
@@ -80,7 +80,7 @@ Dashboard
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>

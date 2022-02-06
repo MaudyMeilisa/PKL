@@ -6,7 +6,7 @@ use App\Models\Gaji;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
-
+use Session;
 class GajiController extends Controller
 {
     /**
@@ -48,7 +48,7 @@ class GajiController extends Controller
             'tunjangan' => 'required',
             'lembur' => 'required',
             'potongan'=>'required',
-            'total'=>'required',
+            //'total'=>'required',
         ]);
 
         $gaji = new Gaji;
@@ -58,7 +58,7 @@ class GajiController extends Controller
         $gaji->tunjangan = $request->tunjangan;
         $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
-        $gaji->total = $request->total;
+        $gaji->total = $gaji->gapok + $gaji->tunjangan + $gaji->lembur - $gaji->potongan;
         $gaji->save();
         Session::flash("flash_notification", [
             "level"=>"success",
@@ -109,7 +109,7 @@ class GajiController extends Controller
             'tunjangan' => 'required',
             'lembur' => 'required',
             'potongan'=>'required',
-            'total'=>'required',
+            //'total'=>'required',
         ]);
 
         $gaji = new Gaji;
@@ -119,7 +119,7 @@ class GajiController extends Controller
         $gaji->tunjangan = $request->tunjangan;
         $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
-        $gaji->total = $request->total;
+        $gaji->total = $gaji->gapok + $gaji->tunjangan + $gaji->lembur - $gaji->potongan;
         $gaji->save();
         return redirect()->route('gaji.index');
     }

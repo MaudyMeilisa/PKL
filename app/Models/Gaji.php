@@ -31,4 +31,10 @@ protected $visible=['karyawan_id','jabatan_id','gapok','tunjangan','lembur','pot
         //data model "jabatan" melalui fk "jabatan_id"
         return $this->belongsTo('App\Models\Jabatan','jabatan_id');
     }
+    public function gaji()
+    {
+        //data model "gaji" bisa memiliki banyak data
+        //data model "jabatan" melalui fk "jabatan_id"
+        return $this->belongsTo('App\Models\Gaji','jabatan_id');
+    }
 }
