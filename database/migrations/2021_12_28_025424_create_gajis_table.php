@@ -19,7 +19,7 @@ class CreateGajisTable extends Migration
             $table->biginteger('jabatan_id')->unsigned();
             $table->string('gapok');
             $table->string('tunjangan');
-            $table->string('lembur');
+            // $table->string('lembur');
             $table->string('potongan');
             $table->string('total');
 

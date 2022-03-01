@@ -55,15 +55,7 @@ Dashboard
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="">Masukan lembur</label>
-                            <input type="number" name="lembur" value="{{$gaji->lembur}}" class="form-control @error('lembur') is-invalid @enderror">
-                             @error('lembur')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                       
                         <div class="form-group">
                             <label for="">Masukan Potongan</label>
                             <input type="number" name="potongan" value="{{$gaji->potongan}}" class="form-control @error('potongan') is-invalid @enderror">

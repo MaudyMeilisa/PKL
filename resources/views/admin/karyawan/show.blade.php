@@ -14,7 +14,8 @@ Dashboard
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Data Karyawan</div>
+                <div class="card-header"><center><h5>Data Karyawan</h5></center>
+                <center><h7><i>Bukan apa yang anda capai,namun apa yang anda atasi itulah yang mendefinisikan karier anda</h7></i></center></div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for=""> Nama Karyawan</label>
@@ -45,7 +46,7 @@ Dashboard
                         <input type="text" name="" value="{{$karyawan->jabatan->nama_jabatan}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <a href="{{url('admin/karyawan')}}" class="btn btn-block btn-outline-primary">Kembali</a>
+                        <a href="{{url('penggajian/karyawan')}}" class="btn btn-block btn-outline-primary">Kembali</a>
                     </div>
                 </div>
             </div>

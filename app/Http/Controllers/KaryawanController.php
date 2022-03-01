@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
-use Session;
 
+use Alert;
 class KaryawanController extends Controller
 {
     /**
@@ -64,10 +64,8 @@ class KaryawanController extends Controller
         $karyawan->username = $request->username;
         $karyawan->password = $request->password;
         $karyawan->save();
-        Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Berhasil Menyimpan  $karyawan->nama_karyawan"
-        ]);
+        Alert::success('Success', 'Berhasil Menambahkan Data Karyawan');
+
         return redirect()->route('karyawan.index');
     }
 
@@ -136,11 +134,14 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $karyawan = Karyawan::findOrFail($id);
-        $karyawan->delete();
+
+        if (!Karyawan::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('karyawan.index');
     }
+
 
     public function login(){
         return view('admin.karyawan.login');

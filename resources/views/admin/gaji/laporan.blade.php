@@ -11,7 +11,9 @@
 
 <body>
 
-
+<h2><center>LAPORAN PENGGAJIAN KARYAWAN</center></h2>
+<h3><center>PT.MAKMUR SEJAHTERA</center></h3>
+<h7><center>Alamat: Jl. Inhoftank No.16 Kel.Pelindung Hewan, Kec. AstanaAnyar - Kota Bandung - Jawa Barat</center></h7>
 <div class="card">
 <div class="card-body">
 <button onclick="return window.print()" class="btn btn-success">Cetak</button>
@@ -21,6 +23,9 @@
 <tr>
 <th scope="col">No</th>
 <th scope="col">Nama Karyawan</th>
+<th scope="col">Jenis Kelamin</th>
+<th scope="col">Alamat</th>
+<th scope="col">Nama Jabatan</th>
 <th scope="col">Gaji</th>
 
 </tr>
@@ -31,7 +36,10 @@
 <tr>
 <td>{{ $index+1 }}</td>
 <td>{{ $data->karyawan->nama_karyawan }}</td>
-<td>{{ $data->total }}</td>
+<td>{{ $data->karyawan->jk }}</td>
+<td>{{ $data->karyawan->alamat}}</td>
+<td>{{ $data->jabatan->nama_jabatan }}</td>
+ <td>Rp.{{number_format($data->total)}}</td>
 
 </tr>
 @endforeach

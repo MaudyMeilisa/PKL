@@ -22,14 +22,14 @@ Dashboard
                     </div>
                     <div class="form-group">
                         <label for=""> tanggal masuk</label>
-                        <input type="date" name="tanggal_masuk" value="{{$absen->tanggal_masuk}}" class="form-control" readonly>
+                        <input type="date" name="tanggal_masuk" value="{{date('d-m-y',strtotime($data->tanggal_masuk ))}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for=""> status absen</label>
                         <input type="text" name="status_absen" value="{{$absen->status_absen}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <a href="{{url('admin/absen')}}" class="btn btn-block btn-outline-primary">Kembali</a>
+                        <a href="{{url('penggajian/absen')}}" class="btn btn-block btn-outline-primary">Kembali</a>
                     </div>
                 </div>
             </div>

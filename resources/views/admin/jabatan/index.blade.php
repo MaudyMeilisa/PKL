@@ -4,10 +4,44 @@
 
 @section('content_header')
 
-Dashboard
+Data Jabatan
 
 @endsection
+@section('css')
+<link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+    @endsection
 
+@section('js')
+<script src="{{asset('DataTables/datatables.min.js')}}">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#jabatan').DataTable();
+        });
+
+        </script>
+   <script src="{{asset('js/sweetalert2.js')}}"></script>
+<script>
+    $(".delete-confirm").click(function (event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
+        @endsection
 @section('content')
 @include('layouts._flash')
     <div class="container">
@@ -27,6 +61,7 @@ Dashboard
                                     <th>Nomor</th>
                                     <th>Nama Jabatan</th>
                                     <th>Gaji Pokok</th>
+                                    <th>Tunjangan</th>
                                     <th>Action</th>
                                 </tr>
                         </thead>
@@ -37,6 +72,7 @@ Dashboard
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $data->nama_jabatan }}</td>
                                         <td>Rp. {{ number_format($data->gapok) }}</td>
+                                         <td>Rp. {{ number_format($data->tunjangan) }}</td>
                                         <td>
                                             <form action="{{ route('jabatan.destroy', $data->id) }}" method="post">
                                                 @method('delete')
@@ -45,8 +81,7 @@ Dashboard
                                                     class="btn btn-outline-info">Edit</a>
                                                 <a href="{{ route('jabatan.show', $data->id) }}"
                                                     class="btn btn-outline-warning">Show</a>
-                                                <button type="submit" class="btn btn-outline-danger"
-                                                    onclick="return confirm('Are you sure?');">Delete</button>
+                                                <button type="submit" class="btn btn-danger delete-confirm">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -59,18 +94,6 @@ Dashboard
         </div>
     </div>
     @endsection
-@section('css')
-<link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
-    @endsection
 
-@section('js')
-<script src="{{asset('DataTables/datatables.min.js')}}">
-    </script>
-    <script>
-        $(document).ready(function(){
-            $('#jabatan').DataTable();
-        });
-        </script>
-        @endsection
 
 

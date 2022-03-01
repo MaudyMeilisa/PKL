@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
-use Session;
 
+use Alert;
 class JabatanController extends Controller
 {
     /**
@@ -42,14 +42,35 @@ class JabatanController extends Controller
             'gapok' => 'required',
         ]);
 
+        $tunjangan = 0;
+        if($request->nama_jabatan == 'Direktur'){
+            $tunjangan = 5000000;
+        }else if($request->nama_jabatan == 'Manager'){
+            $tunjangan = 4500000;
+        }else if($request->nama_jabatan == 'Sekretaris'){
+            $tunjangan = 2000000;
+        }else if($request->nama_jabatan == 'Bendahara'){
+            $tunjangan = 1000000;
+        }else if($request->nama_jabatan == 'OB'){
+            $tunjangan = 500000;
+        }else if($request->nama_jabatan == 'Direksi'){
+            $tunjangan = 10000000;
+        }else if($request->nama_jabatan == 'Direkturutama'){
+            $tunjangan = 9500000;
+        }else if($request->nama_jabatan == 'Managerpemasaran'){
+            $tunjangan = 8000000;
+        }else if($request->nama_jabatan == 'Adminis'){
+            $tunjangan = 9000000;
+        }
+
+
         $jabatan = new jabatan;
         $jabatan->nama_jabatan = $request->nama_jabatan;
         $jabatan->gapok = $request->gapok;
+        $jabatan->tunjangan=$tunjangan;
         $jabatan->save();
-        Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Berhasil Menyimpan  $jabatan->nama_jabatan"
-        ]);
+        Alert::success('Success', 'Berhasil Menambahkan Data Jabatan');
+
         return redirect()->route('jabatan.index');
     }
 
@@ -74,6 +95,7 @@ class JabatanController extends Controller
     public function edit($id)
     {
         $jabatan = Jabatan::findOrFail($id);
+
         return view('admin.jabatan.edit', compact('jabatan'));
     }
 
@@ -89,12 +111,17 @@ class JabatanController extends Controller
         $request->validate([
             'nama_jabatan' => 'required',
             'gapok' => 'required',
+            // 'tunjangan' => 'required',
+
         ]);
 
         $jabatan = Jabatan::findOrFail($id);
         $jabatan->nama_jabatan = $request->nama_jabatan;
         $jabatan->gapok = $request->gapok;
+        // $jabatan->tunjangan=$request->tunjangan;
         $jabatan->save();
+        Alert::success('Success', 'Berhasil MengUpdate Data Jabatan');
+
         return redirect()->route('jabatan.index');
     }
 
@@ -106,8 +133,11 @@ class JabatanController extends Controller
      */
     public function destroy($id)
     {
-        $jabatan = Jabatan::findOrFail($id);
-        $jabatan->delete();
+
+        if (!Jabatan::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('jabatan.index');
     }
 }

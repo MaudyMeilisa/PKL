@@ -6,7 +6,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\LaporanController;
-
+use App\Http\Controllers\RekapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,4 +89,9 @@ Route::group(['prefix' => 'penggajian', 'middleware' => ['auth', 'role:admin|mem
         Route::resource('absen', AbsenController::class);
         Route::resource('gaji', GajiController::class);
         Route::resource('laporan', LaporanController::class);
+        Route::resource('rekap', RekapController::class);
+        Route::get('profile',function(){
+            return view('layouts.profile');
+    });
+
     });

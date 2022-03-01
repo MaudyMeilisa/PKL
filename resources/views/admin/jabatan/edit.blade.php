@@ -21,11 +21,15 @@ Dashboard
                         @method('put')
                         <div class="form-group">
                                 <label for="">Pilih Jabatan</label><br>
-                                <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
-                                <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
-                                <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
-                                <input type="radio" name="nama_jabatan" value="Bendahara">Bendahara<br>
-                                <input type="radio" name="nama_jabatan" value="OB">OB<br>
+                                 <input type="radio" name="nama_jabatan" value="Direksi" {{ $jabatan->nama_jabatan == "Direksi" ? "checked" : "" }}>Direksi<br>
+                                 <input type="radio" name="nama_jabatan" value="Direkturutama" {{ $jabatan->nama_jabatan == "Direkturutama" ? "checked" : "" }} >Direktur Utama<br>
+                                <input type="radio" name="nama_jabatan" value="Direktur" {{ $jabatan->nama_jabatan == "Direktur" ? "checked" : "" }} >Direktur<br>
+                                <input type="radio" name="nama_jabatan" value="Manager" {{ $jabatan->nama_jabatan == "Manager" ? "checked" : "" }}>Manager<br>
+                                 <input type="radio" name="nama_jabatan" value="Managerpemasaran" {{ $jabatan->nama_jabatan == "Managerpemasaran" ? "checked" : "" }}>Manager Pemasaran<br>
+                                <input type="radio" name="nama_jabatan" value="Sekretaris" {{ $jabatan->nama_jabatan == "Sekretaris" ? "checked" : "" }}>Sekretaris<br>
+                                 <input type="radio" name="nama_jabatan" value="Adminis" {{ $jabatan->nama_jabatan == "Adminis" ? "checked" : "" }}>Administrasi<br>
+                                <input type="radio" name="nama_jabatan" value="Bendahara" {{ $jabatan->nama_jabatan == "Bendahara" ? "checked" : "" }}>Bendahara<br>
+                                <input type="radio" name="nama_jabatan" value="OB" {{ $jabatan->nama_jabatan == "OB" ? "checked" : "" }}>OB<br>
                                     </input>
                                 @error('nama_jabatan')
                                     <span class="invalid-feedback" role="alert">

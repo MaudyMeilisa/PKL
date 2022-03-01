@@ -45,16 +45,8 @@ Dashboard
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Tunjangan</label>
-                                <input type="number" name="tunjangan" class="form-control @error('tunjangan') is-invalid @enderror">
-                                @error('tunjangan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
+
+                            {{-- <div class="form-group">
                                 <label for="">lembur</label>
                                 <input type="text" name="lembur" class="form-control @error('lembur') is-invalid @enderror">
                                 @error('lembur')
@@ -62,7 +54,7 @@ Dashboard
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="">Potongan</label>
                                 <input type="number" name="potongan" class="form-control @error('potongan') is-invalid @enderror">

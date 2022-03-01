@@ -32,10 +32,10 @@ Dashboard
                         <label for=""> Tunjangan</label>
                         <input type="number" name="tunjangan" value="{{$gaji->tunjangan}}" class="form-control" readonly>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for=""> Lembur</label>
                         <input type="number" name="lembur" value="{{$gaji->lembur}}" class="form-control" readonly>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="">Potongan</label>
                         <input type="number" name="potongan" value="{{$gaji->potongan}}" class="form-control" readonly>
@@ -45,7 +45,7 @@ Dashboard
                         <input type="number" name="total" value="{{$gaji->total}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <a href="{{url('admin/gaji')}}" class="btn btn-block btn-outline-primary">Kembali</a>
+                        <a href="{{url('penggajian/gaji')}}" class="btn btn-block btn-outline-primary">Kembali</a>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-
+<head> 
     {{-- Base Meta Tags --}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,6 +101,7 @@
     @endif
 
     {{-- Custom Scripts --}}
+    @include('sweetalert::alert')
     @yield('adminlte_js')
 
 </body>

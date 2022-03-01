@@ -28,7 +28,6 @@ Dashboard
                                 <th>Jabatan</th>
                                 <th>Gaji Pokok</th>
                                 <th>Tunjangan</th>
-                                <th>Lembur</th>
                                 <th>Potongan</th>
                                 <th>Total Gaji</th>
                                 <th>Aksi</th>
@@ -43,16 +42,19 @@ Dashboard
                                 <td>{{$data->jabatan->nama_jabatan}}</td>
                                 <td>Rp.{{ number_format($data->gapok) }}</td>
                                 <td>Rp.{{number_format($data->tunjangan)}}</td>
-                                <td>{{number_format($data->lembur)}}</td>
                                 <td>Rp.{{number_format($data->potongan)}}</td>
                                 <td>Rp.{{number_format($data->total)}}</td>
                                 <td>
                                     <form action="{{route('gaji.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
+                                        @role('admin')
                                         <a href="{{route('gaji.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        @endrole
                                         <a href="{{route('gaji.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                           @role('admin')
+                                        <button type="submit" class="btn btn-danger delete-confirm">Delete</button>
+                                        @endrole
                                     </form>
                                 </td>
                             </tr>
@@ -76,5 +78,27 @@ Dashboard
         $(document).ready(function(){
             $('#gaji').DataTable();
         });
+
         </script>
+   <script src="{{asset('js/sweetalert2.js')}}"></script>
+<script>
+    $(".delete-confirm").click(function (event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
         @endsection

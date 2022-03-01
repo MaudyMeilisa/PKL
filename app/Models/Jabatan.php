@@ -9,10 +9,10 @@ class Jabatan extends Model
 {
     use HasFactory;
     //memberikan akses data apa saja yang bisa dilihat
-   protected $visible=['nama_jabatan','gapok'];
+   protected $visible=['nama_jabatan','gapok','tunjangan'];
 
    //memberikan akses dat apa saja yang bisa diisi
-   protected $fillable =['nama_jabatan','gapok'];
+   protected $fillable =['nama_jabatan','gapok','tunjangan'];
 
    //mencatat waktu pembuatan dan update data otomatis
    public $timestamps=true;

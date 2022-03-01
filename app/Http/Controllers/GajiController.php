@@ -7,6 +7,8 @@ use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Session;
+use Alert;
+
 class GajiController extends Controller
 {
     /**
@@ -19,6 +21,7 @@ class GajiController extends Controller
         $gaji = Gaji::with('jabatan', 'karyawan')->get();
         return view('admin.gaji.index', compact('gaji'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,8 +48,7 @@ class GajiController extends Controller
             'karyawan_id'=>'required',
             'jabatan_id'=>'required',
             'gapok' => 'required',
-            'tunjangan' => 'required',
-            'lembur' => 'required',
+            // 'lembur' => 'required',
             'potongan'=>'required',
             //'total'=>'required',
         ]);
@@ -55,11 +57,12 @@ class GajiController extends Controller
         $gaji->karyawan_id = $request->karyawan_id;
         $gaji->jabatan_id = $request->jabatan_id;
         $gaji->gapok = $request->gapok;
-        $gaji->tunjangan = $request->tunjangan;
-        $gaji->lembur = $request->lembur;
+        $gaji->tunjangan = Jabatan::findOrFail($request->jabatan_id)->tunjangan;
+        // $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
         $gaji->total = $gaji->gapok + $gaji->tunjangan + $gaji->lembur - $gaji->potongan;
         $gaji->save();
+        Alert::success('Success', 'Berhasil Menambahkan Data Absensi');
         Session::flash("flash_notification", [
             "level"=>"success",
             "message"=>"Berhasil Menyimpan  $gaji->karyawan_id  "
@@ -107,7 +110,7 @@ class GajiController extends Controller
             'jabatan_id'=>'required',
             'gapok' => 'required',
             'tunjangan' => 'required',
-            'lembur' => 'required',
+            // 'lembur' => 'required',
             'potongan'=>'required',
             //'total'=>'required',
         ]);
@@ -117,10 +120,12 @@ class GajiController extends Controller
         $gaji->jabatan_id = $request->jabatan_id;
         $gaji->gapok = $request->gapok;
         $gaji->tunjangan = $request->tunjangan;
-        $gaji->lembur = $request->lembur;
+        // $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
-        $gaji->total = $gaji->gapok + $gaji->tunjangan + $gaji->lembur - $gaji->potongan;
+        $gaji->total = $gaji->gapok + $gaji->tunjangan * $gaji->lembur - $gaji->potongan;
         $gaji->save();
+        Alert::success('Success', 'Berhasil MengUpdate Data Gaji');
+
         return redirect()->route('gaji.index');
     }
 
@@ -132,8 +137,11 @@ class GajiController extends Controller
      */
     public function destroy($id)
     {
-        $gaji = Gaji::findOrFail($id);
-        $gaji->delete();
+
+        if (!Gaji::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('gaji.index');
     }
 }

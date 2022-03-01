@@ -241,6 +241,7 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+
         [
             'text'  => 'Data Jabatan',
             'url'   => 'penggajian/jabatan',
@@ -251,17 +252,22 @@ return [
            'text'  => 'Data Karyawan',
            'url'   => 'penggajian/karyawan',
            'icon'  => 'fas fa-address-card',
-           'can'  => 'AksesAdmin',
+           'can'  => ['AksesAdmin','AksesMember'],
        ],
 
        [
-        'text'  => 'Data Absensi',
+        'text'  => 'Absensi',
         'url'   => 'penggajian/absen',
         'icon'  => 'fas fa-calendar-check ',
         'can'  => 'AksesAdmin',
     ],
 
-
+//  [
+//         'text'  => 'Rekap Absensi',
+//         'url'   => 'penggajian/rekap',
+//         'icon'  => 'fas fa-calendar-check ',
+//         'can'  => 'AksesAdmin',
+//     ],
 
        [
         'text'  => 'Data Gaji',

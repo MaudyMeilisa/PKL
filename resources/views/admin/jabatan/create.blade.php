@@ -20,10 +20,14 @@ Dashboard
                             @csrf
                             <div class="form-group">
                                 <label for="">Nama Jabatan</label><br>
+                               <input type="radio" name="nama_jabatan" value="Direksi">Direksi<br>
+                                 <input type="radio" name="nama_jabatan" value="Direkturutama">Direktur Utama<br>
                                 <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
                                 <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
+                                 <input type="radio" name="nama_jabatan" value="Managerpemasaran">Manager Pemasaran<br>
                                 <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
-                                <input type="radio" name="nama_jabatan" value="OB">Bendahara<br>
+                                 <input type="radio" name="nama_jabatan" value="Adminis">Administrasi<br>
+                                <input type="radio" name="nama_jabatan" value="Bendahara">Bendahara<br>
                                 <input type="radio" name="nama_jabatan" value="OB">OB<br>
 </input>
                                 @error('nama_jabatan')
@@ -39,8 +43,18 @@ Dashboard
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
+
                                 @enderror
                             </div>
+                             {{-- <div class="form-group">
+                                <label for="">Tunjangan</label>
+                                <input type="text" name="tunjangan" class="form-control @error('tunjangan') is-invalid @enderror">
+                                @error('tunjangan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                       @enderror
+                            </div> --}}
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Save</button>

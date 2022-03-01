@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Absen;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +26,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    // public function absen()
+    // {
+    //     //
+    //     $karyawan = Karyawan::get();
+    //     $absen = Absen::all();
+    //     return view('admin.absen.absen', compact('absen'));
+    // }
 }
