@@ -49,7 +49,7 @@ class KaryawanController extends Controller
             'jk' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
-            'no_hp' => 'required',
+            'no_hp' => 'required|numeric',
             'jabatan_id' => 'required',
         ]);
 

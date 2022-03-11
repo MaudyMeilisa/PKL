@@ -21,7 +21,19 @@ Dashboard
                         @method('put')
                         <div class="form-group">
                                 <label for="">Pilih Jabatan</label><br>
-                                 <input type="radio" name="nama_jabatan" value="Direksi" {{ $jabatan->nama_jabatan == "Direksi" ? "checked" : "" }}>Direksi<br>
+                                 <select class="form-control" id="exampleFormControlSelect1" name="nama_jabatan">
+                                <option>Direksi</option>
+                                <option>Direktur Utama</option>
+                                <option>Direktur</option>
+                                <option>Manager</option>
+                                <option>Manager Pemasaran</option>
+                                <option>Sekretaris</option>
+                                <option>Administrasi</option>
+                                <option>Bendahara</option>
+                                <option>OB</option>
+                                </select>
+
+                                 {{-- <input type="radio" name="nama_jabatan" value="Direksi" {{ $jabatan->nama_jabatan == "Direksi" ? "checked" : "" }}>Direksi<br>
                                  <input type="radio" name="nama_jabatan" value="Direkturutama" {{ $jabatan->nama_jabatan == "Direkturutama" ? "checked" : "" }} >Direktur Utama<br>
                                 <input type="radio" name="nama_jabatan" value="Direktur" {{ $jabatan->nama_jabatan == "Direktur" ? "checked" : "" }} >Direktur<br>
                                 <input type="radio" name="nama_jabatan" value="Manager" {{ $jabatan->nama_jabatan == "Manager" ? "checked" : "" }}>Manager<br>
@@ -30,7 +42,7 @@ Dashboard
                                  <input type="radio" name="nama_jabatan" value="Adminis" {{ $jabatan->nama_jabatan == "Adminis" ? "checked" : "" }}>Administrasi<br>
                                 <input type="radio" name="nama_jabatan" value="Bendahara" {{ $jabatan->nama_jabatan == "Bendahara" ? "checked" : "" }}>Bendahara<br>
                                 <input type="radio" name="nama_jabatan" value="OB" {{ $jabatan->nama_jabatan == "OB" ? "checked" : "" }}>OB<br>
-                                    </input>
+                                    </input> --}}
                                 @error('nama_jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

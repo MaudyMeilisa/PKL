@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Gaji;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Session;
-use Alert;
 
 class GajiController extends Controller
 {
@@ -21,7 +21,6 @@ class GajiController extends Controller
         $gaji = Gaji::with('jabatan', 'karyawan')->get();
         return view('admin.gaji.index', compact('gaji'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,11 +44,11 @@ class GajiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'karyawan_id'=>'required',
-            'jabatan_id'=>'required',
-            'gapok' => 'required',
+            'karyawan_id' => 'required|numeric',
+            'jabatan_id' => 'required|numeric',
+            'gapok' => 'required|numeric',
             // 'lembur' => 'required',
-            'potongan'=>'required',
+            'potongan' => 'required|numeric',
             //'total'=>'required',
         ]);
 
@@ -64,8 +63,8 @@ class GajiController extends Controller
         $gaji->save();
         Alert::success('Success', 'Berhasil Menambahkan Data Absensi');
         Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Berhasil Menyimpan  $gaji->karyawan_id  "
+            "level" => "success",
+            "message" => "Berhasil Menyimpan  $gaji->karyawan_id  ",
         ]);
         return redirect()->route('gaji.index');
     }
@@ -106,12 +105,12 @@ class GajiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'karyawan_id'=>'required',
-            'jabatan_id'=>'required',
+            'karyawan_id' => 'required',
+            'jabatan_id' => 'required',
             'gapok' => 'required',
             'tunjangan' => 'required',
             // 'lembur' => 'required',
-            'potongan'=>'required',
+            'potongan' => 'required',
             //'total'=>'required',
         ]);
 

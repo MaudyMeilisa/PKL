@@ -19,17 +19,19 @@ Dashboard
                         <form action="{{ route('jabatan.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="">Nama Jabatan</label><br>
-                               <input type="radio" name="nama_jabatan" value="Direksi">Direksi<br>
-                                 <input type="radio" name="nama_jabatan" value="Direkturutama">Direktur Utama<br>
-                                <input type="radio" name="nama_jabatan" value="Direktur">Direktur<br>
-                                <input type="radio" name="nama_jabatan" value="Manager">Manager<br>
-                                 <input type="radio" name="nama_jabatan" value="Managerpemasaran">Manager Pemasaran<br>
-                                <input type="radio" name="nama_jabatan" value="Sekretaris">Sekretaris<br>
-                                 <input type="radio" name="nama_jabatan" value="Adminis">Administrasi<br>
-                                <input type="radio" name="nama_jabatan" value="Bendahara">Bendahara<br>
-                                <input type="radio" name="nama_jabatan" value="OB">OB<br>
-</input>
+                            <label for="">Nama Jabatan</label><br>
+                              <select class="form-control" id="exampleFormControlSelect1" name="nama_jabatan">
+                                <option>Direksi</option>
+                                <option>Direktur Utama</option>
+                                <option>Direktur</option>
+                                <option>Manager</option>
+                                <option>Manager Pemasaran</option>
+                                <option>Sekretaris</option>
+                                <option>Administrasi</option>
+                                <option>Bendahara</option>
+                                <option>OB</option>
+                                </select>
+                                
                                 @error('nama_jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -18,7 +18,7 @@ Dashboard
                     <div class="card-body">
                         <form action="{{ route('karyawan.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="">Username</label>
                                 <input type="text" name="username" class="form-control @error('username') is-invalid @enderror">
                                 @error('username')
@@ -35,7 +35,7 @@ Dashboard
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="">Nama Karyawan</label>
                                 <input type="text" name="nama_karyawan" class="form-control @error('nama_karyawan') is-invalid @enderror">
@@ -66,8 +66,15 @@ Dashboard
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Agama</label>
-                                <input type="text" name="agama" class="form-control @error('agama') is-invalid @enderror">
+                            <label for="">Agama</label><br>
+                              <select class="form-control" id="exampleFormControlSelect1" name="agama">
+                                <option>Islam</option>
+                                <option>Kristen</option>
+                                <option>Hindu</option>
+                                <option>Khonghucu</option>
+                                <option>Budha</option>
+
+                                </select>
                                 @error('agama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,7 +83,7 @@ Dashboard
                             </div>
                             <div class="form-group">
                                 <label for="">Alamat</label>
-                                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                                <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror"></textarea>
                                 @error('alamat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

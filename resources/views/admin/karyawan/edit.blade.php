@@ -49,8 +49,15 @@ Dashboard
                                 @enderror
                             </div>
                         <div class="form-group">
-                            <label for="">Agama</label>
-                            <input type="text" name="agama" value="{{$karyawan->agama}}" class="form-control @error('agama') is-invalid @enderror">
+                            <label for="">Agama</label><br>
+                              <select class="form-control" id="exampleFormControlSelect1" name="agama">
+                                <option>Islam</option>
+                                <option>Kristen</option>
+                                <option>Hindu</option>
+                                <option>Khonghucu</option>
+                                <option>Budha</option>
+
+                                </select>
                              @error('agama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -59,7 +66,7 @@ Dashboard
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input type="text" name="alamat" value="{{$karyawan->alamat}}" class="form-control @error('alamat') is-invalid @enderror">
+                          <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror"></textarea>
                              @error('alamat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

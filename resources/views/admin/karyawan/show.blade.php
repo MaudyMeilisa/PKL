@@ -35,7 +35,7 @@ Dashboard
                     </div>
                     <div class="form-group">
                         <label for=""> Alamat</label>
-                        <input type="text" name="alamat" value="{{$karyawan->alamat}}" class="form-control" readonly>
+                       <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">No Handphone </label>

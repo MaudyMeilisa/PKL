@@ -104,6 +104,8 @@ class JabatanController extends Controller
         $jabatan = new Jabatan();
         $jabatan->nama_jabatan = $request ->nama_jabatan;
         $jabatan->gaji_pokok = $request ->gaji_pokok;
+        $jabatan->tunjangan = $request->tunjangan;
+
         $jabatan->save();
 
         return responses()->json([
