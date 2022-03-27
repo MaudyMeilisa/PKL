@@ -108,12 +108,12 @@
                 </tr>
             @endforeach
         </table>
-        <table border="1" width="710" height="100">
+        {{-- <table border="1" width="710" height="100">
             <tr>
                 <td width="420" class="total"><b>Total Dana : </b></td>
                 <td align="center" class="jumlah"><b>Rp. {{ number_format($total) }}</b></td>
             </tr>
-        </table>
+        </table> --}}
     </center>
     <script type="text/javascript">
         window.print();

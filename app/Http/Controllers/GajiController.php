@@ -31,7 +31,7 @@ class GajiController extends Controller
     {
         // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir : " . $tglakhir]);
         $cetak = Gaji::whereDate('tanggal_gajian', '>=', $tglawal)->whereDate('tanggal_gajian', '<=', $tglakhir)->get();
-        $total = Gaji::whereDate('tanggal_gajian', '>=', $tglawal)->whereDate('tanggal_gajian', '<=', $tglakhir)->sum('total');
+        // $total = Gaji::whereDate('tanggal_gajian', '>=', $tglawal)->whereDate('tanggal_gajian', '<=', $tglakhir)->sum('total');
         return view('admin.gaji.cetak-pertanggal', compact('cetak', 'total'));
     }
 
