@@ -96,7 +96,7 @@ class PinjamanController extends Controller
     public function edit(Pinjaman $pinjaman)
     {
 
-        $gaji = Gaji::findOrFail($id);
+        // $gaji = Gaji::findOrFail($id);
         $karyawan = Karyawan::all();
         return view('admin.pinjaman.edit', compact('pinjaman', 'karyawan'));
 
