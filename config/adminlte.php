@@ -277,13 +277,6 @@ return [
 
         ],
         [
-            'text' => 'Cetak Gaji',
-            'url' => 'penggajian/laporan',
-            'icon' => 'far fa-fw fa-file',
-            'can' => ['AksesAdmin', 'AksesMember'],
-
-        ],
-        [
             'text' => 'Laporan',
             'url' => 'penggajian/cetak-laporan',
             'icon' => 'far fa-fw fa-file',
