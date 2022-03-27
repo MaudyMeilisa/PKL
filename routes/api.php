@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\API\JabatanController;
+use App\Http\Controllers\API\KaryawanController;
 use App\Http\Controllers\API\LaporanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::resource('jabatan', JabatanController::class);
 Route::resource('laporan', LaporanController::class);
+Route::resource('karyawan', KaryawanController::class);

@@ -55,13 +55,15 @@ class JabatanController extends Controller
             $tunjangan = 500000;
         }else if($request->nama_jabatan == 'Direksi'){
             $tunjangan = 10000000;
-        }else if($request->nama_jabatan == 'Direkturutama'){
+        }else if($request->nama_jabatan == 'Direktur Utama'){
             $tunjangan = 9500000;
-        }else if($request->nama_jabatan == 'Managerpemasaran'){
+        }else if($request->nama_jabatan == 'Manager Pemasaran'){
             $tunjangan = 8000000;
-        }else if($request->nama_jabatan == 'Adminis'){
+        }else if($request->nama_jabatan == 'Administrasi'){
             $tunjangan = 9000000;
         }
+
+
 
 
         $jabatan = new jabatan;
