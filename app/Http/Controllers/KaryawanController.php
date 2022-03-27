@@ -61,8 +61,8 @@ class KaryawanController extends Controller
         $karyawan->alamat = $request->alamat;
         $karyawan->no_hp = $request->no_hp;
         $karyawan->jabatan_id = $request->jabatan_id;
-        $karyawan->username = $request->username;
-        $karyawan->password = $request->password;
+        // $karyawan->username = $request->username;
+        // $karyawan->password = $request->password;
         $karyawan->save();
         Alert::success('Success', 'Berhasil Menambahkan Data Karyawan');
 

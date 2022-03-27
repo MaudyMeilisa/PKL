@@ -10,10 +10,10 @@ class Gaji extends Model
     use HasFactory;
 
 //memberikan akses data apa saja yang bisa dilihat
-protected $visible=['karyawan_id','jabatan_id','gapok','tunjangan','potongan','total'];
+protected $visible=['karyawan_id','jabatan_id','gapok','tunjangan','potongan','total','tanggal_gajian'];
 
    //memberikan akses dat apa saja yang bisa diisi
-   protected $fillable =['karyawan_id','jabatan_id','gapok','tunjangan','potongan','total'];
+   protected $fillable =['karyawan_id','jabatan_id','gapok','tunjangan','potongan','total','tanggal_gajian'];
 
    //mencatat waktu pembuatan dan update data otomatis
    public $timestamps=true;

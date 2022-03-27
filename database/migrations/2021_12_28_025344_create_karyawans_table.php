@@ -16,8 +16,8 @@ class CreateKaryawansTable extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_karyawan');
-            $table->string('username')->unique();
-            $table->string('password');
+            // $table->string('username')->unique();
+            // $table->string('password');
             $table->date('ttl');
             $table->string('jk');
             $table->string('agama');

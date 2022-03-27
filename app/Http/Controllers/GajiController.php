@@ -22,6 +22,19 @@ class GajiController extends Controller
         return view('admin.gaji.index', compact('gaji'));
     }
 
+    public function cetakForm()
+    {
+        return view('admin.gaji.cetak');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir)
+    {
+        // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir : " . $tglakhir]);
+        $cetak = Gaji::whereDate('tanggal_gajian', '>=', $tglawal)->whereDate('tanggal_gajian', '<=', $tglakhir)->get();
+        $total = Gaji::whereDate('tanggal_gajian', '>=', $tglawal)->whereDate('tanggal_gajian', '<=', $tglakhir)->sum('total');
+        return view('admin.gaji.cetak-pertanggal', compact('cetak', 'total'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,6 +62,7 @@ class GajiController extends Controller
             'gapok' => 'required|numeric',
             // 'lembur' => 'required',
             'potongan' => 'required|numeric',
+            'tanggal_gajian' => 'required',
             //'total'=>'required',
         ]);
 
@@ -57,9 +71,9 @@ class GajiController extends Controller
         $gaji->jabatan_id = $request->jabatan_id;
         $gaji->gapok = $request->gapok;
         $gaji->tunjangan = Jabatan::findOrFail($request->jabatan_id)->tunjangan;
-        // $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
         $gaji->total = $gaji->gapok + $gaji->tunjangan + $gaji->lembur - $gaji->potongan;
+        $gaji->tanggal_gajian = $request->tanggal_gajian;
         $gaji->save();
         Alert::success('Success', 'Berhasil Menambahkan Data Absensi');
         Session::flash("flash_notification", [
@@ -111,10 +125,11 @@ class GajiController extends Controller
             'tunjangan' => 'required',
             // 'lembur' => 'required',
             'potongan' => 'required',
+            'tanggal_gajian' => 'required',
             //'total'=>'required',
         ]);
 
-        $gaji = new Gaji;
+        $gaji = Gaji::findOrFail($id);
         $gaji->karyawan_id = $request->karyawan_id;
         $gaji->jabatan_id = $request->jabatan_id;
         $gaji->gapok = $request->gapok;
@@ -122,6 +137,8 @@ class GajiController extends Controller
         // $gaji->lembur = $request->lembur;
         $gaji->potongan = $request->potongan;
         $gaji->total = $gaji->gapok + $gaji->tunjangan * $gaji->lembur - $gaji->potongan;
+        $gaji->tanggal_gajian = $request->tanggal_gajian;
+
         $gaji->save();
         Alert::success('Success', 'Berhasil MengUpdate Data Gaji');
 

@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\GajiController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\GajiController;
-use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PinjamanController;
 use App\Http\Controllers\RekapController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\RekapController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('auth.login');
@@ -25,15 +26,13 @@ Route::get('/', function () {
 
 Auth::routes(
     [
-        'register' => false
+        'register' => false,
     ]
 );
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/login-karyawan', [KaryawanController::class, 'login'])->name('loginKaryawan');
 Route::post('/login-karyawan', [KaryawanController::class, 'loginStore'])->name('loginKaryawan');
-
-
 
 // Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']],
 //     function () {
@@ -59,8 +58,6 @@ Route::post('/login-karyawan', [KaryawanController::class, 'loginStore'])->name(
 //         Route::get('laporan', [GajiController::class, 'laporan'])->name('laporan');
 //     });
 
-
-
 //route admin
 Route::group(['prefix' => 'penggajian', 'middleware' => ['auth', 'role:admin|member']],
     function () {
@@ -73,8 +70,12 @@ Route::group(['prefix' => 'penggajian', 'middleware' => ['auth', 'role:admin|mem
         })->middleware(['role:admin']);
 
         Route::get('/', function () {
-            return  view('absen.index');
+            return view('absen.index');
         })->middleware(['role:admin|member']);
+
+        Route::get('/', function () {
+            return view('pinjaman.index');
+        })->middleware(['role:admin']);
 
         Route::get('/', function () {
             return view('gaji.index');
@@ -87,11 +88,16 @@ Route::group(['prefix' => 'penggajian', 'middleware' => ['auth', 'role:admin|mem
         Route::resource('jabatan', JabatanController::class);
         Route::resource('karyawan', KaryawanController::class);
         Route::resource('absen', AbsenController::class);
+        Route::resource('pinjaman', PinjamanController::class);
         Route::resource('gaji', GajiController::class);
         Route::resource('laporan', LaporanController::class);
         Route::resource('rekap', RekapController::class);
-        Route::get('profile',function(){
+        Route::get('profile', function () {
             return view('layouts.profile');
-    });
+        });
+        Route::get('/cetak-laporan', 'App\Http\Controllers\GajiController@cetakForm')->name('cetak-laporan');
+        Route::get('/cetak-laporan-pertanggal/{tglawal}/{tglakhir}',
+            'App\Http\Controllers\GajiController@cetakPertanggal')
+            ->name('cetak-laporan-pertanggal');
 
     });

@@ -45,6 +45,10 @@ Dashboard
                         <input type="number" name="total" value="{{$gaji->total}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="">Tanggal Gajian</label>
+                        <input type="date" name="tanggal_gajian" value="{{$gaji->tanggal_gajian}}" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
                         <a href="{{url('penggajian/gaji')}}" class="btn btn-block btn-outline-primary">Kembali</a>
                     </div>
                 </div>

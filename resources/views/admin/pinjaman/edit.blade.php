@@ -14,42 +14,33 @@ Dashboard
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Edit Data Gaji</div>
+                <div class="card-header">Edit Data Pinjaman</div>
                 <div class="card-body">
-                   <form action="{{route('gaji.update',$gaji->id)}}" method="post">
+                   <form action="{{route('pinjaman.update',$pinjaman->id)}}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-group">
                                 <label for="">Nama Karyawan</label>
                                 <select name="karyawan_id" class="form-control @error('karyawan_id') is-invalid @enderror" >
                                 @foreach($karyawan as $data)
-                                    <option value="{{$data->id}}" {{$data->id == $gaji->karyawan_id ? 'selected="selected"' : '' }}>{{$data->nama_karyawan}}</option>
+                                    <option value="{{$data->id}}" {{$data->id == $pinjaman->karyawan_id ? 'selected="selected"' : '' }}>{{$data->nama_karyawan}}</option>
                                 @endforeach
                             </select>
 
                             </div>
                         <div class="form-group">
-                            <label for="">Jabatan</label>
-                            <input type="text" name="jabatan_id" value="{{$gaji->jabatan_id}}" class="form-control @error('jabatan_id') is-invalid @enderror">
-                             @error('jabatan_id')
+                            <label for="">BPJS</label>
+                            <input type="number" name="bpjs" value="{{$pinjaman->bpjs}}" class="form-control @error('bpjs') is-invalid @enderror">
+                             @error('bpjs')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Masukan Gaji Pokok</label>
-                            <input type="number" name="gapok" value="{{$gaji->gapok}}" class="form-control @error('gapok') is-invalid @enderror">
-                             @error('gapok')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="">Masukan Tunjangan</label>
-                            <input type="number" name="tunjangan" value="{{$gaji->tunjangan}}" class="form-control @error('tunjangan') is-invalid @enderror">
-                             @error('tunjangan')
+                            <label for="">Investasi</label>
+                            <input type="number" name="investasi" value="{{$pinjaman->investasi}}" class="form-control @error('investasi') is-invalid @enderror">
+                             @error('investasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -57,32 +48,34 @@ Dashboard
                         </div>
 
                         <div class="form-group">
-                            <label for="">Masukan Potongan</label>
-                            <input type="number" name="potongan" value="{{$gaji->potongan}}" class="form-control @error('potongan') is-invalid @enderror">
-                             @error('potongan')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="">Total</label>
-                            <input type="number" name="total" value="{{$gaji->total}}" class="form-control @error('total') is-invalid @enderror">
-                             @error('total')
+                            <label for="">Kasbon</label>
+                            <input type="number" name="kasbon" value="{{$pinjaman->kasbon}}" class="form-control @error('kasbon') is-invalid @enderror">
+                             @error('kasbon')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                          <div class="form-group">
-                                <label for="">Tanggal Gajian</label>
-                                <input type="date" name="tanggal_gajian" class="form-control @error('tanggal_gajian') is-invalid @enderror">
-                                @error('tanggal_gajian')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                               @enderror
-                            </div>
+                            <label for="">Tagihan</label>
+                            <input type="number" name="tagihan" value="{{$pinjaman->tagihan}}" class="form-control @error('tagihan') is-invalid @enderror">
+                             @error('tagihan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Total Pinjaman</label>
+                            <input type="number" name="total_pinjaman" value="{{$pinjaman->total_pinjaman}}" class="form-control @error('total_pinjaman') is-invalid @enderror">
+                             @error('total_pinjaman')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <button type="reset" class="btn btn-outline-warning">Reset</button>
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>

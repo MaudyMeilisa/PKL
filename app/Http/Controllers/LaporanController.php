@@ -1,25 +1,89 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Gaji;
+
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function index()
+    // {
+    //     return view('laporan.index');
+    // }
+
+    // public function cetakForm()
+    // {
+    //     return view('laporan.cetak');
+    // }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $gaji = Gaji::get();
-        return view('admin.gaji.laporan', compact('gaji'));
+        //
     }
 
-    public function laporan(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $start = $request->tanggalAwal;
-        $end = $request->tanggalAkhir;
-        $article = Article::whereBetween('tanggal', [$start, $end])
-            ->get();
-        // dd($article);
-        $pdf = \PDF::loadView('admin.gaji.laporan', ['laporan' => $laporan]);
-        return $pdf->download('cetak-gaji.pdf');
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

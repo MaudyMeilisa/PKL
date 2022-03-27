@@ -22,6 +22,7 @@ class CreateGajisTable extends Migration
             // $table->string('lembur');
             $table->string('potongan');
             $table->string('total');
+            $table->string('tanggal_gajian');
 
 
             //fk id_karyawan
@@ -33,6 +34,8 @@ class CreateGajisTable extends Migration
             $table->foreign('jabatan_id')->references('id')
             ->on('jabatans')->onUpdate('cascade')
             ->onDelete('cascade');
+
+            
 
             $table->timestamps();
         });
